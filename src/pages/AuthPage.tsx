@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { Leaf, GraduationCap, ChefHat, KeyRound, Copy, Check } from "lucide-react";
+import { Leaf, GraduationCap, ChefHat, KeyRound, Copy, Check, Sparkles } from "lucide-react";
 import { z } from "zod";
 
 const emailSchema = z.string().email("Please enter a valid email address");
@@ -146,11 +146,17 @@ const AuthPage: React.FC = () => {
 
   if (newRecoveryKey) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-secondary via-background to-secondary/50 p-4">
-        <Card variant="elevated" className="w-full max-w-md animate-scale-in">
+      <div className="min-h-screen flex items-center justify-center p-4 relative">
+        {/* Background effects */}
+        <div className="fixed inset-0 pointer-events-none">
+          <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[150px]" />
+          <div className="absolute bottom-1/3 right-1/4 w-[300px] h-[300px] bg-accent/10 rounded-full blur-[120px]" />
+        </div>
+
+        <Card variant="elevated" className="w-full max-w-md animate-scale-in relative">
           <CardHeader className="text-center space-y-4">
-            <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-              <KeyRound className="w-8 h-8 text-primary" />
+            <div className="mx-auto w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30 flex items-center justify-center shadow-glow">
+              <KeyRound className="w-10 h-10 text-primary" />
             </div>
             <CardTitle className="text-2xl">Save Your Recovery Key</CardTitle>
             <CardDescription>
@@ -158,14 +164,14 @@ const AuthPage: React.FC = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="relative">
-              <div className="bg-muted p-4 rounded-lg font-mono text-center text-lg tracking-wider border-2 border-primary/20">
+            <div className="relative group">
+              <div className="glass-strong p-5 rounded-xl font-mono text-center text-lg tracking-widest border border-primary/30 group-hover:border-primary/50 transition-colors">
                 {newRecoveryKey}
               </div>
               <Button
                 variant="ghost"
                 size="icon"
-                className="absolute right-2 top-1/2 -translate-y-1/2"
+                className="absolute right-3 top-1/2 -translate-y-1/2"
                 onClick={copyRecoveryKey}
               >
                 {copied ? (
@@ -178,7 +184,7 @@ const AuthPage: React.FC = () => {
             <p className="text-sm text-muted-foreground text-center">
               ⚠️ This key will only be shown once. Write it down or save it securely.
             </p>
-            <Button onClick={proceedAfterRecoveryKey} className="w-full" size="lg">
+            <Button onClick={proceedAfterRecoveryKey} variant="eco" className="w-full" size="lg">
               I've Saved My Recovery Key
             </Button>
           </CardContent>
@@ -189,18 +195,24 @@ const AuthPage: React.FC = () => {
 
   if (showRecovery) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-secondary via-background to-secondary/50 p-4">
-        <Card variant="elevated" className="w-full max-w-md animate-scale-in">
+      <div className="min-h-screen flex items-center justify-center p-4 relative">
+        {/* Background effects */}
+        <div className="fixed inset-0 pointer-events-none">
+          <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[150px]" />
+          <div className="absolute bottom-1/3 right-1/4 w-[300px] h-[300px] bg-accent/10 rounded-full blur-[120px]" />
+        </div>
+
+        <Card variant="elevated" className="w-full max-w-md animate-scale-in relative">
           <CardHeader className="text-center space-y-4">
-            <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-              <KeyRound className="w-8 h-8 text-primary" />
+            <div className="mx-auto w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30 flex items-center justify-center shadow-glow">
+              <KeyRound className="w-10 h-10 text-primary" />
             </div>
             <CardTitle className="text-2xl">Account Recovery</CardTitle>
             <CardDescription>
               Enter your email and recovery key to reset your password
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-5">
             <div className="space-y-2">
               <Label htmlFor="recovery-email">Email</Label>
               <Input
@@ -221,7 +233,7 @@ const AuthPage: React.FC = () => {
                 onChange={(e) => setRecoveryKey(e.target.value.toUpperCase())}
               />
             </div>
-            <Button className="w-full" size="lg">
+            <Button variant="eco" className="w-full" size="lg">
               Recover Account
             </Button>
             <Button
@@ -238,17 +250,24 @@ const AuthPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-secondary via-background to-secondary/50 p-4">
-      <div className="w-full max-w-md space-y-6 animate-fade-in">
+    <div className="min-h-screen flex items-center justify-center p-4 relative">
+      {/* Background effects */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px]" />
+        <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="w-full max-w-md space-y-8 relative animate-fade-in">
         {/* Logo */}
-        <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground mb-4">
-            <Leaf className="w-8 h-8 animate-leaf-sway" />
+        <div className="text-center space-y-4">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-glow animate-float">
+            <Leaf className="w-10 h-10" />
           </div>
-          <h1 className="text-3xl font-display font-bold text-foreground">
-            EcoTaste Buds
+          <h1 className="text-4xl font-display font-bold text-foreground">
+            <span className="eco-gradient-text">EcoTaste</span> Buds
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground flex items-center justify-center gap-2">
+            <Sparkles className="w-4 h-4 text-primary" />
             Sustainable eating for a better tomorrow
           </p>
         </div>
@@ -259,14 +278,14 @@ const AuthPage: React.FC = () => {
               value={isLogin ? "login" : "signup"}
               onValueChange={(v) => setIsLogin(v === "login")}
             >
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="login">Login</TabsTrigger>
-                <TabsTrigger value="signup">Sign Up</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-2 bg-secondary/50 p-1 rounded-xl">
+                <TabsTrigger value="login" className="rounded-lg data-[state=active]:bg-card data-[state=active]:shadow-md">Login</TabsTrigger>
+                <TabsTrigger value="signup" className="rounded-lg data-[state=active]:bg-card data-[state=active]:shadow-md">Sign Up</TabsTrigger>
               </TabsList>
             </Tabs>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {!isLogin && (
                 <>
                   <div className="space-y-2">
@@ -283,26 +302,26 @@ const AuthPage: React.FC = () => {
                     )}
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <Label>I am a...</Label>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2 gap-4">
                       <Button
                         type="button"
-                        variant={role === "student" ? "default" : "outline"}
-                        className="h-auto py-4 flex-col gap-2"
+                        variant={role === "student" ? "eco" : "glass"}
+                        className="h-auto py-5 flex-col gap-3"
                         onClick={() => setRole("student")}
                       >
-                        <GraduationCap className="w-6 h-6" />
-                        <span>Student</span>
+                        <GraduationCap className="w-7 h-7" />
+                        <span className="font-semibold">Student</span>
                       </Button>
                       <Button
                         type="button"
-                        variant={role === "cafeteria" ? "default" : "outline"}
-                        className="h-auto py-4 flex-col gap-2"
+                        variant={role === "cafeteria" ? "eco" : "glass"}
+                        className="h-auto py-5 flex-col gap-3"
                         onClick={() => setRole("cafeteria")}
                       >
-                        <ChefHat className="w-6 h-6" />
-                        <span>Cafeteria</span>
+                        <ChefHat className="w-7 h-7" />
+                        <span className="font-semibold">Cafeteria</span>
                       </Button>
                     </div>
                   </div>
@@ -351,7 +370,7 @@ const AuthPage: React.FC = () => {
                 <Button
                   type="button"
                   variant="link"
-                  className="w-full"
+                  className="w-full text-muted-foreground hover:text-primary"
                   onClick={() => setShowRecovery(true)}
                 >
                   Forgot password? Use recovery key

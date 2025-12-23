@@ -19,8 +19,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "sans-serif"],
-        display: ["Playfair Display", "serif"],
+        sans: ["Outfit", "sans-serif"],
+        display: ["Syne", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -64,6 +64,11 @@ export default {
           success: "hsl(var(--eco-success))",
           waste: "hsl(var(--eco-waste))",
         },
+        glow: {
+          primary: "hsl(var(--glow-primary))",
+          accent: "hsl(var(--glow-accent))",
+          carbon: "hsl(var(--glow-carbon))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -79,6 +84,13 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "calc(var(--radius) + 4px)",
+        "2xl": "calc(var(--radius) + 8px)",
+      },
+      boxShadow: {
+        glow: "var(--shadow-glow)",
+        card: "var(--shadow-card)",
+        elevated: "var(--shadow-elevated)",
       },
       keyframes: {
         "accordion-down": {
@@ -90,29 +102,48 @@ export default {
           to: { height: "0" },
         },
         "fade-in": {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         "slide-in": {
-          "0%": { opacity: "0", transform: "translateX(-20px)" },
+          "0%": { opacity: "0", transform: "translateX(-30px)" },
           "100%": { opacity: "1", transform: "translateX(0)" },
         },
         "scale-in": {
-          "0%": { opacity: "0", transform: "scale(0.95)" },
+          "0%": { opacity: "0", transform: "scale(0.9)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
-        "leaf-sway": {
-          "0%, 100%": { transform: "rotate(-3deg)" },
-          "50%": { transform: "rotate(3deg)" },
+        "glow-pulse": {
+          "0%, 100%": { opacity: "0.5" },
+          "50%": { opacity: "1" },
+        },
+        "border-flow": {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "50%": { transform: "translateY(-15px) rotate(3deg)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.5s ease-out forwards",
-        "slide-in": "slide-in 0.4s ease-out forwards",
-        "scale-in": "scale-in 0.3s ease-out forwards",
-        "leaf-sway": "leaf-sway 3s ease-in-out infinite",
+        "fade-in": "fade-in 0.6s ease-out forwards",
+        "fade-in-up": "fade-in-up 0.8s ease-out forwards",
+        "slide-in": "slide-in 0.5s ease-out forwards",
+        "scale-in": "scale-in 0.4s ease-out forwards",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+        "border-flow": "border-flow 4s ease infinite",
+        float: "float 4s ease-in-out infinite",
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
   },
